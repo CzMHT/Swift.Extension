@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         serverSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
     }
     
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
