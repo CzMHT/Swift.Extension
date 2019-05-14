@@ -40,17 +40,17 @@ extension String {
             let range = NSMakeRange(Int(location)!, Int(length)!);
             
             // 字体大小
-            attrContent.addAttribute(NSAttributedStringKey.font, value: fontArray[index], range: range)
+            attrContent.addAttribute(NSAttributedString.Key.font, value: fontArray[index], range: range)
             
             // 字体颜色
-            attrContent.addAttribute(NSAttributedStringKey.foregroundColor, value: colorArray[index], range: range)
+            attrContent.addAttribute(NSAttributedString.Key.foregroundColor, value: colorArray[index], range: range)
         }
         
         // 内容行间距
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing;
         
-        attrContent.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, length()))
+        attrContent.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, length()))
         
         return attrContent;
     }

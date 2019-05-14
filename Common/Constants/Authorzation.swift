@@ -20,7 +20,7 @@ class Authorzation: NSObject {
     // MARK: - 获取麦克风权限
     public func getAudioPermission(request: Bool = true, back: @escaping ((Bool) -> Void)) {
         
-        let statu = AVAudioSession.sharedInstance().recordPermission()
+        let statu = AVAudioSession.sharedInstance().recordPermission
         
         switch statu {
         case .denied ,.undetermined:

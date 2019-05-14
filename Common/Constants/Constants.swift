@@ -16,41 +16,55 @@ let BLACK_COLOR = UIColor.black // black color #000000
 let RANGE_LOCATION = "rangeLocation"           // range 位置
 let RANGE_LENGTH   = "rangeLength"             // range 长度
 
-let Screen_Height: CGFloat = UIScreen.main.bounds.size.height
-let Screen_Width:  CGFloat = UIScreen.main.bounds.size.width
+let ScreenWidths: CGFloat = UIScreen.main.bounds.size.width
+let ScreenHeight: CGFloat = UIScreen.main.bounds.size.height
 
-// 判断 iPhone5
+// 判断 iPhone5s
 let iPhone5 = UIScreen.instancesRespond(to: #selector(getter: UIScreen.main.currentMode)) ? CGSize(width: 960, height: 1336).equalTo((UIScreen.main.currentMode?.size)!) : false
-// 判断 iPhone6
-let iPhone6 = UIScreen.instancesRespond(to: #selector(getter: UIScreen.main.currentMode)) ? CGSize(width: 750, height: 1334).equalTo((UIScreen.main.currentMode?.size)!) : false
+// 判断 iPhone6s
+let iPhone6s = UIScreen.instancesRespond(to: #selector(getter: UIScreen.main.currentMode)) ? CGSize(width: 750, height: 1334).equalTo((UIScreen.main.currentMode?.size)!) : false
 // 判断 iPhone6p
 let iPhone6p = UIScreen.instancesRespond(to: #selector(getter: UIScreen.main.currentMode)) ? CGSize(width: 1242, height: 2208).equalTo((UIScreen.main.currentMode?.size)!) : false
-// 判断 iPhone6p 大屏幕
-let iPhone6pBigMode = UIScreen.instancesRespond(to: #selector(getter: UIScreen.main.currentMode)) ? CGSize(width: 1125, height: 2001).equalTo((UIScreen.main.currentMode?.size)!) : false
-// 判断iPhoneX
-let iPhoneX = UIScreen.instancesRespond(to: #selector(getter: UIScreen.main.currentMode)) ? CGSize(width: 1125, height: 2436).equalTo((UIScreen.main.currentMode?.size)!) : false
 //适配参数
-let suitParm:CGFloat = (iPhone6p ? 1.12 : (iPhone6 ? 1.0 : (iPhone6pBigMode ? 1.01 : (isIphoneX() ? 1.0 : 0.85))))
+let suitParm:CGFloat = (iPhone6p ? 1.12 : (iPhone6s ? 1.0 : (iPhoneX() ? 1.0 : 0.85)))
 
-// 状态栏高度
-let STATUS_BAR_HEIGHT: CGFloat = (isIphoneX() ? 44.0 : 20.0)
-// 导航栏高度
-let NAVIGATION_BAR_HEIGHT: CGFloat = (isIphoneX() ? 88.0 : 64.0)
-// tabBar高度
-let TAB_BAR_HEIGHT: CGFloat = (isIphoneX() ? (49.0+34.0) : 49.0)
-// home indicator
-let HOME_INDICATOR_HEIGHT: CGFloat = (isIphoneX() ? 34.0 : 0.0)
-
-func isIphoneX() -> Bool {
-    guard UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.pad else {
+public func iPhoneX() -> Bool
+{
+    guard UIDevice.current.userInterfaceIdiom != .phone else {
         return false
     }
-    if #available(iOS 11.0 ,* ) {
-        if ((UIApplication.shared.delegate?.window)!)!.safeAreaInsets.bottom > 0.0 {
+    if #available(iOS 11.0, *) {
+        let window = UIApplication.shared.delegate?.window!
+        if (window?.safeAreaInsets.bottom)! > 0 {
             return true
         }
     }
     return false
+}
+public func StatusBarHeight() -> CGFloat
+{
+    return UIApplication.shared.statusBarFrame.height
+}
+public func NavigationBarHeight() -> CGFloat
+{
+    if iPhoneX() {
+        return 88
+    }
+    return 64
+}
+public func TabbarHeight() -> CGFloat
+{
+    if iPhoneX() {
+        return 83
+    }
+    return 49
+}
+public func HomeIndiCatorHeight() -> CGFloat
+{
+    if iPhoneX() {
+        return 34
+    }
+    return 0
 }
 
 // MARK:- 自定义打印

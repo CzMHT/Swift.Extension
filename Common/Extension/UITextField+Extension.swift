@@ -18,7 +18,7 @@ extension UITextField {
                       textColor: UIColor,
                       textFontSize: CGFloat,
                       keyboardType: UIKeyboardType = .default,
-                      clearButtonMode: UITextFieldViewMode = .whileEditing) {
+                      clearButtonMode: UITextField.ViewMode = .whileEditing) {
         
         self.init()
         
