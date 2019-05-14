@@ -60,8 +60,7 @@ extension UIButton {
 public enum LayoutImageStyle {
     case top ,left ,bottom ,right
 }
-
-//设置 图片与文字的位置
+// MARK: - image+text
 extension UIButton {
     public func layoutStyle(style: LayoutImageStyle ,space: CGFloat) {
         
@@ -101,6 +100,37 @@ extension UIButton {
     }
 }
 
+
+typealias buttonClosure = () -> ()
+extension UIButton {
+    private struct RuntimeKey {
+        static let actionBlock = UnsafeRawPointer.init(bitPattern: "actionBlock".hashValue)
+        /// ...其他Key声明
+    }
+    /// 运行时关联
+    private var closure: buttonClosure? {
+        set {
+            objc_setAssociatedObject(self, UIButton.RuntimeKey.actionBlock!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        get {
+            return  objc_getAssociatedObject(self, UIButton.RuntimeKey.actionBlock!) as? buttonClosure
+        }
+    }
+    /// 点击回调
+    @objc private func insideClick(button: UIButton) {
+        if self.closure != nil {
+            self.closure!()
+        }
+        _ = delay(0.5)
+    }
+    
+    @discardableResult
+    func insideClosure(closure: @escaping buttonClosure) -> UIButton {
+        self.addTarget(self, action:#selector(insideClick(button:)) , for:.touchUpInside)
+        self.closure = closure
+        return self
+    }
+}
 
 
 

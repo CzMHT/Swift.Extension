@@ -77,7 +77,7 @@ extension ViewController {
         logView = UITextView(textColor: UIColor.gray, textFontSize: 15)
         logView.backgroundColor = UIColor.yellow
         
-        logView.frame = CGRect(x: 50, y: 280, width: Screen_Width - 100, height: 300)
+        logView.frame = CGRect(x: 50, y: 280, width: ScreenWidths - 100, height: 300)
         
         view.addSubview(portLabel)
         view.addSubview(portField)

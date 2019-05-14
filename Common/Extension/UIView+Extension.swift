@@ -7,40 +7,35 @@
 //
 
 import UIKit
+import SnapKit
 
-extension UIView{
+extension UIView {
     
-    public var originX: CGFloat{
-        get{
-            return self.frame.origin.x
-        }
-        set(newOriginX){
+    public var originX: CGFloat {
+        get { return self.frame.origin.x }
+        set {
             var frame = self.frame
-            frame.origin.x = newOriginX
+            frame.origin.x = newValue
             self.frame = frame
         }
     }
-    public var originY: CGFloat{
-        get{
-            return self.frame.origin.y
-        }
-        set(newOriginY){
+    public var originY: CGFloat {
+        get { return self.frame.origin.y }
+        set {
             var frame = self.frame
-            frame.origin.y = newOriginY
+            frame.origin.y = newValue
             self.frame = frame
         }
     }
-    public var centerX: CGFloat{
-        get{
-            return self.center.x
-        }
-        set(newcenterX){
+    public var centerX: CGFloat {
+        get { return self.center.x }
+        set {
             var center = self.center
-            center.x = newcenterX
+            center.x = newValue
             self.center = center
         }
     }
-    public var centerY:CGFloat {
+    public var centerY: CGFloat {
         get {
             return self.center.y
         }
@@ -51,7 +46,7 @@ extension UIView{
         }
     }
 
-    public var height:CGFloat{
+    public var height: CGFloat {
         get{
             return self.frame.size.height
         }
@@ -61,7 +56,7 @@ extension UIView{
             self.frame = frame
         }
     }
-    public var width:CGFloat {
+    public var width: CGFloat {
         get {
             return self.frame.size.width
         }
@@ -71,12 +66,12 @@ extension UIView{
             self.frame = frame
         }
     }
-    public var maxX:CGFloat{
+    public var maxX: CGFloat{
         get {
             return self.frame.origin.x + self.frame.size.width
         }
     }
-    public var maxY:CGFloat{
+    public var maxY: CGFloat{
         get{
             return self.frame.origin.y + self.frame.size.height
         }
@@ -91,16 +86,30 @@ extension UIView{
             self.frame = frame
         }
     }
-    public func removeAllSubviews(){
-        for subview:UIView in self.subviews {
+}
+
+extension UIView {
+    
+    convenience init (backColor: UIColor = UIColor.clear) {
+        self.init()
+        backgroundColor = backColor
+    }
+}
+
+extension UIView {
+    
+    public func removeAllSubviews() {
+        let subViews = self.subviews
+        for subview: UIView in subViews {
             subview.removeFromSuperview()
         }
     }
+    
     /**
      *  绘制渐变色
      *  @param isHorizontal 是否是水平方向的绘制
      */
-    public func graidentLayerWithIsHorizontal(isHorizontal:Bool){
+    public func graidentLayerWithIsHorizontal(isHorizontal: Bool) {
         
         let gradientLayer = CAGradientLayer()
         
@@ -150,7 +159,7 @@ extension UIView{
      - parameter color 线条颜色
      - parameter lineWidth 线条宽度
      */
-    public func borderLineLayer(radiu: CGFloat ,color: UIColor ,lineWidth:CGFloat) {
+    public func borderLineLayer(radiu: CGFloat ,color: UIColor ,lineWidth: CGFloat) {
         
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
@@ -168,5 +177,30 @@ extension UIView{
         
         self.layer.insertSublayer(borderLayer, at: 0)
         self.layer.mask = maskLayer
+    }
+}
+
+extension UIView {
+    
+    /// 控件响应 延迟
+    public func delay(_ time: Double) -> UIView {
+        isUserInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+            self.isUserInteractionEnabled = true
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    public func added(into superView: UIView) -> UIView {
+        superView.addSubview(self)
+        return self
+    }
+    
+    @discardableResult
+    func snaps(_ closure: (ConstraintMaker) -> ()) -> UIView {
+        self.snp.makeConstraints(closure)
+        return self
     }
 }

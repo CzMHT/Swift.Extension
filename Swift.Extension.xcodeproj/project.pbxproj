@@ -16,6 +16,7 @@
 		9E74FF13202037AC00282F5E /* UIImage+Gifs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E74FF12202037AC00282F5E /* UIImage+Gifs.swift */; };
 		9E74FF162020383E00282F5E /* GifGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E74FF152020383E00282F5E /* GifGenerator.swift */; };
 		9E74FF202020640A00282F5E /* UIImageView+FaceAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E74FF1F2020640A00282F5E /* UIImageView+FaceAware.swift */; };
+		9E7A65C4223A363B00ED7498 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7A65C3223A363B00ED7498 /* UIView+Extension.swift */; };
 		9ECF7BED20106E5900F84110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF7BEC20106E5900F84110 /* AppDelegate.swift */; };
 		9ECF7BEF20106E5900F84110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF7BEE20106E5900F84110 /* ViewController.swift */; };
 		9ECF7BF220106E5900F84110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ECF7BF020106E5900F84110 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		9E74FF12202037AC00282F5E /* UIImage+Gifs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gifs.swift"; sourceTree = "<group>"; };
 		9E74FF152020383E00282F5E /* GifGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGenerator.swift; sourceTree = "<group>"; };
 		9E74FF1F2020640A00282F5E /* UIImageView+FaceAware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+FaceAware.swift"; sourceTree = "<group>"; };
+		9E7A65C3223A363B00ED7498 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9ECF7BE920106E5900F84110 /* Swift.Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift.Extension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECF7BEC20106E5900F84110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ECF7BEE20106E5900F84110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				9E74FF12202037AC00282F5E /* UIImage+Gifs.swift */,
 				9E54495720107655005F3CB4 /* String+Extension.swift */,
+				9E7A65C3223A363B00ED7498 /* UIView+Extension.swift */,
 				9ECF7C062010739E00F84110 /* UILabel+Extension.swift */,
 				9ECF7C0420106F0500F84110 /* UIButton+Extension.swift */,
 				9E54495B201077BF005F3CB4 /* UITextView+Extension.swift */,
@@ -168,7 +171,6 @@
 				9ECF7BE620106E5900F84110 /* Frameworks */,
 				9ECF7BE720106E5900F84110 /* Resources */,
 				CF8B81A105A5258B10BEDFDA /* [CP] Embed Pods Frameworks */,
-				13C1DE99A335434F7329CB5A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,11 +188,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = YuanGu;
 				TargetAttributes = {
 					9ECF7BE820106E5900F84110 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -227,21 +230,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13C1DE99A335434F7329CB5A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swift.Extension/Pods-Swift.Extension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		95FD0952188C7CC9B0BACFFC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,7 +254,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Swift.Extension/Pods-Swift.Extension-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Swift.Extension/Pods-Swift.Extension-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -277,7 +265,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swift.Extension/Pods-Swift.Extension-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swift.Extension/Pods-Swift.Extension-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -290,6 +278,7 @@
 				9E74FF13202037AC00282F5E /* UIImage+Gifs.swift in Sources */,
 				9E1BD2CA21AB905B00175BA7 /* UINavigationBar+Extension.swift in Sources */,
 				9ECF7BF520106E5900F84110 /* Swift_Extension.xcdatamodeld in Sources */,
+				9E7A65C4223A363B00ED7498 /* UIView+Extension.swift in Sources */,
 				9E54495820107655005F3CB4 /* String+Extension.swift in Sources */,
 				9ECF7C0520106F0500F84110 /* UIButton+Extension.swift in Sources */,
 				9ECF7C072010739E00F84110 /* UILabel+Extension.swift in Sources */,
@@ -340,6 +329,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -347,6 +337,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -397,6 +388,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -404,6 +396,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -443,7 +436,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.Swift-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -458,7 +451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.Swift-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

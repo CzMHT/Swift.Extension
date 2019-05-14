@@ -440,7 +440,7 @@ extension FTPRequest {
         let supportsAsynchronousNotification = CFWriteStreamSetClient(writeStream, registeredEvents, { (stream, event, data) in
             let myself = Unmanaged<FTPRequest>.fromOpaque(data!).takeUnretainedValue()
             switch event {
-            case CFStreamEventType.hasBytesAvailable:
+            case CFStreamEventType.canAcceptBytes:
                 let buffer: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>(bitPattern: UploadBufferSize)!
                 let byteRead = CFWriteStreamWrite(stream, buffer, UploadBufferSize)
                 if byteRead > 0

@@ -83,14 +83,14 @@ import MobileCoreServices
             self.generateCMTimesArrayOfFramesUsingAsset(framesInterval, asset: AVURLAsset(url: url))
             
             var i = 0
-            let test = { (time1: CMTime, im: CGImage?, time2: CMTime, result: AVAssetImageGeneratorResult, error: Error?) in
-                if(result == AVAssetImageGeneratorResult.succeeded) {
+            let test = { (time1: CMTime, im: CGImage?, time2: CMTime, result: AVAssetImageGenerator.Result, error: Error?) in
+                if(result == AVAssetImageGenerator.Result.succeeded) {
                     if let image = im {
                         self.framesArray.append(UIImage(cgImage: image))
                     }
-                } else if (result == AVAssetImageGeneratorResult.failed) {
+                } else if (result == AVAssetImageGenerator.Result.failed) {
                     callback(nil);
-                } else if (result == AVAssetImageGeneratorResult.cancelled) {
+                } else if (result == AVAssetImageGenerator.Result.cancelled) {
                     callback(nil);
                 }
                 i = i+1
@@ -100,10 +100,10 @@ import MobileCoreServices
                 }
                 } as AVAssetImageGeneratorCompletionHandler
             let generator = AVAssetImageGenerator(asset: AVAsset(url: url))
-            generator.apertureMode = AVAssetImageGeneratorApertureMode.cleanAperture;
+            generator.apertureMode = AVAssetImageGenerator.ApertureMode.cleanAperture;
             generator.appliesPreferredTrackTransform = true;
-            generator.requestedTimeToleranceBefore = kCMTimeZero;
-            generator.requestedTimeToleranceAfter = kCMTimeZero;
+            generator.requestedTimeToleranceBefore = CMTime.zero;
+            generator.requestedTimeToleranceAfter = CMTime.zero;
             
             generator.generateCGImagesAsynchronously(forTimes: self.cmTimeArray, completionHandler: test)
         }
@@ -115,7 +115,7 @@ import MobileCoreServices
         }
         
         for t in 0 ..< asset.duration.value {
-            let thumbTime = CMTimeMake(t, asset.duration.timescale)
+            let thumbTime = CMTimeMake(value: t, timescale: asset.duration.timescale)
             let value = NSValue(time: thumbTime)
             cmTimeArray.append(value)
         }
@@ -131,11 +131,11 @@ import MobileCoreServices
         
         for t in 0 ..< videoDuration {
             let tempInt = Int64(t)
-            let tempCMTime = CMTimeMake(tempInt, asset.duration.timescale)
+            let tempCMTime = CMTimeMake(value: tempInt, timescale: asset.duration.timescale)
             let interval = Int32(framesInterval)
             
             for j in 1 ..< framesInterval+1 {
-                let newCMtime = CMTimeMake(Int64(j), interval)
+                let newCMtime = CMTimeMake(value: Int64(j), timescale: interval)
                 let addition = CMTimeAdd(tempCMTime, newCMtime)
                 cmTimeArray.append(NSValue(time: addition))
             }
